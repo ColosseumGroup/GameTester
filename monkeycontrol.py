@@ -4,7 +4,7 @@ import sys
 import threading
 
 #**********************************************************
-sys.path.append('C:\\Users\\bowei\\Desktop\\PokerGame\\')
+sys.path.append('C:\\Users\\bowei\\Desktop\\GameTester\\')
 #**************************************must edit here first
 from com.android.monkeyrunner import MonkeyRunner, MonkeyDevice
 from CommonFile.Client import Client
