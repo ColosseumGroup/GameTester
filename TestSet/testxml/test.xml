@@ -1,0 +1,58 @@
+<BehaviorCollection BehaviorFor="Testing">
+<Behavior actionType="drag">
+   <description>"Meaningless"</description>
+   <x1>100</x1>
+   <y1>200</y1>
+   <x2>300</x2>
+   <y2>400</y2>
+</Behavior>
+<Behavior actionType="snapshot">
+   <description>"snapshot"</description>
+   <x1>0</x1>
+   <y1>0</y1>
+   <x2>0</x2>
+   <y2>0</y2>
+</Behavior>
+<Behavior actionType="touch">
+   <description>"Follow"</description>
+   <x1>725</x1>
+   <y1>537</y1>
+   <x2>0</x2>
+   <y2>0</y2>
+</Behavior>
+<Behavior actionType="touch">
+   <description>"Fold"</description>
+   <x1>539</x1>
+   <y1>537</y1>
+   <x2>0</x2>
+   <y2>0</y2>
+</Behavior>
+<Behavior actionType="touch">
+   <description>"AnyBet"</description>
+   <x1>950</x1>
+   <y1>537</y1>
+   <x2>0</x2>
+   <y2>0</y2>
+</Behavior>
+<Behavior actionType="touch">
+   <description>"DoublePot"</description>
+   <x1>323</x1>
+   <y1>537</y1>
+   <x2>0</x2>
+   <y2>0</y2>
+</Behavior>
+<Behavior actionType="touch">
+   <description>"HalfPot_Or_ThreeTimesBigBlind"</description>
+   <x1>92</x1>
+   <y1>537</y1>
+   <x2>0</x2>
+   <y2>0</y2>
+</Behavior>
+<Behavior actionType="touch">
+   <description>"OneThirdPot_Or_FourTimesBigBlind"</description>
+   <x1>207</x1>
+   <y1>537</y1>
+   <x2>0</x2>
+   <y2>0</y2>
+</Behavior>
+</BehaviorCollection>
