@@ -4,7 +4,7 @@ import sys
 import os
 import threading
 
-from CommonFile.Behavior import Behavior
+from Behavior import Behavior
 
 class Actor:
     def __init__(self, behaviorQ, snapshot_path):
@@ -48,29 +48,3 @@ class Actor:
             else:
                 self.execute(self.behaviorQueue[instruct])  # slightly faster
 
-def main():
-    # receive argv from cmdline
-    ip = sys.argv[1]
-    port = sys.argv[2]
-    xmlPath = sys.argv[3]
-    snapshot_path = sys.argv[4]  # maybe no need later
-    Psetter = PreSetter(xmlPath)
-    bq = Psetter.runXmlInit()
-
-    # start the controller and snapshot thread
-    MkCtrl = MonkeyController(ip, port, bq, snapshot_path)
-    td1 = threading.Thread(target=MkCtrl.runner, args=())
-
-    td1.start()
-
-    # Exit cleaning
-    while True:#here is to change
-        time.sleep(10)
-        if MkCtrl.controlTag == True:
-            td1.join()
-            MkCtrl.tClient.close()
-            break
-
-
-if __name__ == '__main__':
-    main()

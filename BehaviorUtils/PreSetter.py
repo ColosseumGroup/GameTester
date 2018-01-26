@@ -1,7 +1,7 @@
 ﻿# -*- coding: utf-8 -*-
 import sys
 print (sys.path)
-sys.path.append(sys.path[0]+"//CommonFile")
+sys.path.append(sys.path[0]+"//BehaviorUtils")
 from Behavior import Behavior
 
 from xml.dom.minidom import parse
@@ -56,14 +56,3 @@ class PreSetter:
             BehaviorQueue.append(be)
         print ("BehaviorQueue Size:%d" % len(BehaviorQueue))
         return BehaviorQueue
-
-
-def main():
-    ps = PreSetter()
-    ps.setBehaviorXmlPath('C:\\Users\\bowei\\Desktop\\PokerGame\\TestSet\\testxml\\test.xml')
-    ps.runXmlInit()
-    ps.runParmetersInit()
-
-
-if __name__ == '__main__':
-    main()

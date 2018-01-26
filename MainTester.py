@@ -5,8 +5,8 @@ import os
 import sys
 import threading
 import random
-from Actor import Actor
-from CommonFile.PreSetter import PreSetter
+from BehaviorUtils.Actor import Actor
+from BehaviorUtils.PreSetter import PreSetter
 from Vision.match_hand_card import get_hand_card
 from Vision.match_public_card import get_public_card
 from Vision.is_your_turn import is_your_turn

@@ -48,23 +48,18 @@ GameTester 是一个Android测试工具. 虽然这里写的是德州扑克的环
 
     保存动作信息
 
-6. CommonFile/Client.py 和 Server.py
-
-    因为Jython 和 Python 实现的部分需要跨进程通信，所以做了利用了socket进行通行
-
-7. CommonFile/PreSetter.py
+6. CommonFile/PreSetter.py
 
     从TestSet/test.xml文件中，解析动作信息
 
-8. TestSet/test.xml
+7. TestSet/test.xml
 
     按照XML格式保存动作信息，需要其他动作，模仿范例即可。指令的数字也是按照这里的顺序来的。比如XML里面第2个动作是截图，那么对应的指令就是1
 
 
 ### 已知缺陷
 
-1. Socket通信的指令设计不合理，只用一个数字表示指令，容易出错
-2. 在这个德州扑克游戏中，没有做换桌之类的动作
-3. 对多个设备同时测试的效果未知
-4. 使用时需要注意路径
-5. 
+1. 在这个德州扑克游戏中，没有做换桌之类的动作
+2. 对多个设备同时测试的效果未知
+3. 使用时需要注意路径
+4. 
