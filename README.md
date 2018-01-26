@@ -7,8 +7,8 @@ GameTester 是一个Android测试工具. 虽然这里写的是德州扑克的环
 2. opencv
 3. 配置Java环境
 4. 下载[! Android SDK tools](http://www.androiddevtools.cn/)，按照自己的操作系统选择
-5. 配置环境变量，终端下能直接运行MonkeyRunner即可
-6. windows下可能需要额外下载platform-tools，文件不大，我在env文件下放了一份，解压到和tools同一级即可。同样成功的标志是在终端下运行Monkeyrunner
+5. 配置环境变量，使用ADB SHELL
+6. windows下可能需要额外下载platform-tools，文件不大，我在env文件下放了一份，解压到和tools同一级即可。同样成功的标志是在终端下运行adb
 
 ### 代码文件
 
@@ -18,22 +18,23 @@ GameTester 是一个Android测试工具. 虽然这里写的是德州扑克的环
 
     在这个代码文件中，加入算法程序。下面的例子是每个两秒发送一次指令，并在指令为“1：截图指令”是使用opencv作图像识别
     ```python
+        # here to add algorithm thread
         while True:  # random decision
-                    time.sleep(2)  # send a decision every second
-                    instruct = random.randint(1, 7)
-                    self.tcpS.onSending(instruct)
-                    if self.tcpS.onReceive()=='finished':
-                        if instruct == 1:
-                            img_rgb = cv2.imread(self.rawPath+'\\demo.png')
-                            hand_card = get_hand_card(img_rgb)
-                            public_card = get_public_card(img_rgb)
-                            print (hand_card)
-                            print (public_card)
+            time.sleep(2)  # send a decision every second
+            instruct = random.randint(1, 7)
+            actor.handleInstruct(instruct)
+            
+            if instruct == 1:
+                img_rgb = cv2.imread(self.rawSnapShot+'demo.png')
+                hand_card = get_hand_card(img_rgb)
+                public_card = get_public_card(img_rgb)
+                print (hand_card)
+                print (public_card)
     ```
 
-2. monkeycontrol.py
+2. Actor.py
 
-    这个代码是与Android系统交互的部分。使用了Android官方提供的Monkeyrunner，语法上是和python一样的，但是它是（Jython），这也是需要java环境的原因。
+    ADB SHELL 控制设备的具体实现
 
 3. SnapShotProc.py
 
