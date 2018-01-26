@@ -4,13 +4,15 @@ Spyder Editor
 
 This is a temporary script file.
 """
-
+import sys
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
+thisPath = sys.path[0]
 def get_number_templates():
-    Num_Templates_Path = thisPath + "\\public_template\\number_templates"
+    Num_Templates_Path = thisPath + "\\Vision\\public_template\\number_templates"
+    print(Num_Templates_Path)
     number_A = (cv2.imread(Num_Templates_Path+'\A.png',0),'A')
     number_2 = (cv2.imread(Num_Templates_Path+'\\2.png',0),'2')
     number_3 = (cv2.imread(Num_Templates_Path+'\\3.png',0),'3')

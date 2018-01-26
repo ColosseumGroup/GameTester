@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import time
 import sys
+import os
 import threading
 
 from CommonFile.Behavior import Behavior
@@ -38,7 +39,7 @@ class Actor:
         func = switcher.get(beh.action, "behavior unexcepted!")
         return self.actionWarpper(func,beh)
 
-    def handleInstrct(self, instruct):
+    def handleInstruct(self, instruct):
         if instruct == -1:  # Read exitFlag from tcp
             self.controlTag = True
         else:

@@ -5,11 +5,11 @@ import os
 import sys
 import threading
 import random
+from Actor import Actor
 from CommonFile.PreSetter import PreSetter
 from Vision.match_hand_card import get_hand_card
 from Vision.match_public_card import get_public_card
 from Vision.is_your_turn import is_your_turn
-
 class MainTester:
 
     def __init__(self):
@@ -46,12 +46,12 @@ class MainTester:
       #  self.inputData()
         presetter = PreSetter(self.xmlPath)
         bqueue = presetter.runXmlInit()
-        actor = Actor()
+        actor = Actor(bqueue, self.rawSnapShot)
         # here to add algorithm thread
         while True:  # random decision
             time.sleep(2)  # send a decision every second
             instruct = random.randint(1, 7)
-            actor.onSending(instruct)
+            actor.handleInstruct(instruct)
             
             if instruct == 1:
                 img_rgb = cv2.imread(self.rawSnapShot+'demo.png')

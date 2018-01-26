@@ -5,10 +5,11 @@ Created on Tue Jul 18 20:24:02 2017
 @author: admin
 """
 import cv2
+import sys
 import numpy as np
-
+thisPath = sys.path[0]
 def get_template():
-    template = cv2.imread(thisPath + '\\action_template\\your_turn.png',0)
+    template = cv2.imread(thisPath + '\\Vision\\action_template\\your_turn.png',0)
     return template
     
 def crob_img(img_rgb):
