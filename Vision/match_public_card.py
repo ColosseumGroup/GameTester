@@ -12,7 +12,6 @@ from matplotlib import pyplot as plt
 thisPath = sys.path[0]
 def get_number_templates():
     Num_Templates_Path = thisPath + "\\Vision\\public_template\\number_templates"
-    print(Num_Templates_Path)
     number_A = (cv2.imread(Num_Templates_Path+'\A.png',0),'A')
     number_2 = (cv2.imread(Num_Templates_Path+'\\2.png',0),'2')
     number_3 = (cv2.imread(Num_Templates_Path+'\\3.png',0),'3')
@@ -125,7 +124,3 @@ def get_public_card(img_rgb):
     for r in zip(*identify_result):
         public_card.append(r)
     return public_card
-''' 
-img_rgb = cv2.imread('C:\Poke\\Snapshot\\20170713153421.png')
-a = get_public_card(img_rgb)
-'''

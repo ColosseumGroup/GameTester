@@ -50,8 +50,3 @@ def is_your_turn(img_rgb):
     #cv2.imwrite('res22.png',crobed_img)
     your_turn = match(crobed_img)
     return your_turn
-
-'''
-img_rgb = cv2.imread('C:\Poke\\Snapshot\\20170713184822.png')
-turn = is_your_turn(img_rgb)
-'''

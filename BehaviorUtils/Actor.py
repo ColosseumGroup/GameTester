@@ -4,7 +4,7 @@ import sys
 import os
 import threading
 
-from Behavior import Behavior
+from BehaviorUtils import Behavior
 
 class Actor:
     def __init__(self, behaviorQ, snapshot_path):

@@ -15,9 +15,9 @@ class MainTester:
     def __init__(self):
         self.ip = '127.0.0.1'
         self.port = 0
-        self.xmlPath = sys.path[0] + '\\TestSet\\testxml\\test.xml'
-        self.rawSnapShot = sys.path[0] + '\\TestSet\\testRawSnapShot\\'
-        self.resltPath = sys.path[0] + '\\TestSet\\testResultSnapShot\\'
+        self.xmlPath = sys.path[0] + '\\RelatedFiles\\ConfigXml\\test.xml'
+        self.rawSnapShot = sys.path[0] + '\\RelatedFiles\\RawSnapShot\\'
+        self.resltPath = sys.path[0] + '\\RelatedFiles\\ResultSnapShot\\'
         self.targetSize = (128, 128)
 
     def inputData(self):

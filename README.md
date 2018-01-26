@@ -44,15 +44,15 @@ GameTester 是一个Android测试工具. 虽然这里写的是德州扑克的环
 
     使用opencv的图像识别模块
 
-5. CommonFile/Behavior.py
+5. BehaviorUtils/Behavior.py
 
     保存动作信息
 
-6. CommonFile/PreSetter.py
+6. BehaviorUtils/PreSetter.py
 
     从TestSet/test.xml文件中，解析动作信息
 
-7. TestSet/test.xml
+7. RelatedFiles/ConfigXml/test.xml
 
     按照XML格式保存动作信息，需要其他动作，模仿范例即可。指令的数字也是按照这里的顺序来的。比如XML里面第2个动作是截图，那么对应的指令就是1
 

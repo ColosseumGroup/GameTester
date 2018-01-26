@@ -10,7 +10,6 @@ import numpy as np
 thisPath = sys.path[0]
 def get_number_templates():
     Num_Templates_Path = thisPath + "\\Vision\\hand_template\\number_templates"
-    print(sys.path)
     number_A = (cv2.imread(Num_Templates_Path+'\A.png',0),'A')
     number_2 = (cv2.imread(Num_Templates_Path+'\\2.png',0),'2')
     number_3 = (cv2.imread(Num_Templates_Path+'\\3.png',0),'3')
