@@ -6,9 +6,9 @@ Created on Tue Jul 18 20:24:02 2017
 """
 import cv2
 import numpy as np
-          
+
 def get_template():
-    template = cv2.imread('C:\Poke\\action_template\your_turn.png',0)
+    template = cv2.imread(thisPath + '\\action_template\\your_turn.png',0)
     return template
     
 def crob_img(img_rgb):
@@ -38,7 +38,7 @@ def match(img_rgb):
     for pt in zip(*loc[::-1]):
         cv2.rectangle(is_your_turn_res, pt, (pt[0] + w, pt[1] + h), (0,0,255), 2)
         #print (pt)
-    cv2.imwrite('C:\Poke\\result\\is_your_turn_res.png',is_your_turn_res)
+    cv2.imwrite(thisPath + '\\Vision\\result\\is_your_turn_res.png',is_your_turn_res)
     if loc[0].any():
         return True
     else:

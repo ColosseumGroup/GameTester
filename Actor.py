@@ -3,46 +3,30 @@ import time
 import sys
 import threading
 
-#**********************************************************
-sys.path.append('C:\\Users\\bowei\\Desktop\\GameTester\\')
-#**************************************must edit here first
-from com.android.monkeyrunner import MonkeyRunner, MonkeyDevice
-from CommonFile.Client import Client
 from CommonFile.Behavior import Behavior
-from CommonFile.PreSetter import PreSetter 
-# monkeyrunner is for monkeyrunner (Jython)
 
-class MonkeyController:
-    def __init__(self, ip, port, behaviorQ, rawpath):
-        self.device = MonkeyRunner.waitForConnection()
-        self.device.wake()
-        self.tClient = Client(ip, int(port))
+class Actor:
+    def __init__(self, behaviorQ, snapshot_path):
         self.behaviorQueue = behaviorQ
-        self.RawPath = rawpath
-        self.tClient.connect()
+        self.snapshot_path = snapshot_path
         self.imageNum = 0
         self.controlTag = False
 
     def touch(self, beh):
         P = beh.getCordinateOne()
-        self.device.touch(P[0],P[1], "DOWN_AND_UP")
+        os.system('adb shell input tap %d %d'%(P[0],P[1]))
 
     def drag(self, beh):
-        self.device.drag(beh.getCordinateOne(),
-                         beh.getCordinateTwo(), 0.1)
+        pass
 
     def snapShot(self, beh):
-        im = self.device.takeSnapshot()
-        #filename = "demo%d.png" % self.imageNum
-        filename = "demo.png"
-        #self.imageNum = self.imageNum + 1
-        im.writeToFile(self.RawPath + filename)
-        print ('write to file %s' % filename)
+        os.system('adb shell screencap -p /sdcard/ScreenTemp.png')
+        os.system('adb shell pull /sdcard/ScreenTemp.png '+self.snapshot_path)
+        print('Screen Shot update!')
 
     def actionWarpper(self,action,behavior):
         print ('Perform: %s' % behavior.description)
         action(behavior)
-        self.tClient.onSend('finished')#return finish flag
 
     def execute(self, beh):
         # define more action here later
@@ -63,26 +47,17 @@ class MonkeyController:
             else:
                 self.execute(self.behaviorQueue[instruct])  # slightly faster
 
-    def runner(self):  # receive instruc
-        while True:
-            instruct = self.tClient.onReceive()
-            print ('\nreceive instruct %d'% instruct)
-            self.handleInstrct(instruct)
-            
-            if self.controlTag == True:
-                return
-
 def main():
     # receive argv from cmdline
     ip = sys.argv[1]
     port = sys.argv[2]
     xmlPath = sys.argv[3]
-    rawPath = sys.argv[4]  # maybe no need later
+    snapshot_path = sys.argv[4]  # maybe no need later
     Psetter = PreSetter(xmlPath)
     bq = Psetter.runXmlInit()
 
     # start the controller and snapshot thread
-    MkCtrl = MonkeyController(ip, port, bq, rawPath)
+    MkCtrl = MonkeyController(ip, port, bq, snapshot_path)
     td1 = threading.Thread(target=MkCtrl.runner, args=())
 
     td1.start()

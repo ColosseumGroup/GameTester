@@ -7,9 +7,8 @@ This is a temporary script file.
 import sys
 import cv2
 import numpy as np
-
 def get_number_templates():
-    Num_Templates_Path = "C:\\Users\\bowei\\Desktop\\PokerGame\\Vision\\hand_template\\number_templates"
+    Num_Templates_Path = thisPath + "\\hand_template\\number_templates"
     number_A = (cv2.imread(Num_Templates_Path+'\A.png',0),'A')
     number_2 = (cv2.imread(Num_Templates_Path+'\\2.png',0),'2')
     number_3 = (cv2.imread(Num_Templates_Path+'\\3.png',0),'3')
@@ -27,7 +26,7 @@ def get_number_templates():
     return number_templates
   
 def get_Suit_templates():
-    Suit_Templates_Path = "C:\\Users\\bowei\\Desktop\\PokerGame\\Vision\\hand_template\\suit_templates"
+    Suit_Templates_Path = thisPath + "\\Vision\\hand_template\\suit_templates"
     suit_Spade = (cv2.imread(Suit_Templates_Path+'\Spade.png',0),'Spade')
     suit_Heart = (cv2.imread(Suit_Templates_Path+'\Heart.png',0),'Heart')
     suit_Diamond = (cv2.imread(Suit_Templates_Path+'\Diamond.png',0),'Diamond')
@@ -51,7 +50,7 @@ def Identify_number(img_rgb):
             number = (pt[0],template[1])
             #print (number)
             numbers.append(number)
-    cv2.imwrite('C:\\Users\\bowei\\Desktop\\PokerGame\\Vision\\result\\hand_number_res.png',number_res)
+    cv2.imwrite(thisPath + '\\Vision\\result\\hand_number_res.png',number_res)
     numbers = list(set(numbers))
     numbers.sort(key=lambda x:x[0])
     
@@ -81,7 +80,7 @@ def Identify_suit(img_rgb):
             suit = (pt[0],template[1])
             #print (number)
             suits.append(suit)
-    cv2.imwrite('C:\\Users\\boweu\\Desktop\\PokerGame\\Vision\\result\\hand_suit_res.png',suit_res)        
+    cv2.imwrite(thisPath + '\\Vision\\result\\hand_suit_res.png',suit_res)        
     suits = list(set(suits))
     suits.sort(key=lambda x:x[0])
     
@@ -134,6 +133,7 @@ identify_result = [identify_number,identify_suit]
 for r in zip(*identify_result):
     print (r)
 '''
-
+'''
 img_rgb = cv2.imread('C:\\Users\\bowei\\Desktop\\PokerGame\\Vision\\Snapshot\\20170713150825.png')
 hand_card = get_hand_card(img_rgb)
+'''

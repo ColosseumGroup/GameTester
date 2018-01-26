@@ -10,7 +10,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 def get_number_templates():
-    Num_Templates_Path = "C:\\Users\\bowei\\Desktop\\PokerGame\\Vision\\public_template\\number_templates"
+    Num_Templates_Path = thisPath + "\\public_template\\number_templates"
     number_A = (cv2.imread(Num_Templates_Path+'\A.png',0),'A')
     number_2 = (cv2.imread(Num_Templates_Path+'\\2.png',0),'2')
     number_3 = (cv2.imread(Num_Templates_Path+'\\3.png',0),'3')
@@ -28,7 +28,7 @@ def get_number_templates():
     return number_templates
  
 def get_Suit_templates():
-    Suit_Templates_Path = "C:\\Users\\bowei\\Desktop\\PokerGame\\Vision\\public_template\\suit_templates"
+    Suit_Templates_Path = thisPath + "\\Vision\\public_template\\suit_templates"
     suit_Spade = (cv2.imread(Suit_Templates_Path+'\Spade.png',0),'Spade')
     suit_Heart = (cv2.imread(Suit_Templates_Path+'\Heart.png',0),'Heart')
     suit_Diamond = (cv2.imread(Suit_Templates_Path+'\Diamond.png',0),'Diamond')
@@ -52,7 +52,7 @@ def Identify_number(img_rgb):
             number = (pt[0],template[1])
             #print (number)
             numbers.append(number)
-    cv2.imwrite('C:\\Users\\bowei\\Desktop\\PokerGame\\Vision\\result\\hand_number_res.png',number_res)
+    cv2.imwrite(thisPath + '\\Vision\\result\\hand_number_res.png',number_res)
     numbers = list(set(numbers))
     numbers.sort(key=lambda x:x[0])
     
@@ -82,7 +82,7 @@ def Identify_suit(img_rgb):
             suit = (pt[0],template[1])
             #print (number)
             suits.append(suit)
-    cv2.imwrite('C:\\Users\\bowei\\Desktop\\PokerGame\\Vision\\result\\hand_suit_res.png',suit_res)        
+    cv2.imwrite(thisPath + '\\Vision\\result\\hand_suit_res.png',suit_res)        
     suits = list(set(suits))
     suits.sort(key=lambda x:x[0])
     
@@ -123,6 +123,7 @@ def get_public_card(img_rgb):
     for r in zip(*identify_result):
         public_card.append(r)
     return public_card
-    
+''' 
 img_rgb = cv2.imread('C:\Poke\\Snapshot\\20170713153421.png')
 a = get_public_card(img_rgb)
+'''
